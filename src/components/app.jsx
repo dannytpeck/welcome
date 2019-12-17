@@ -13,7 +13,6 @@ class App extends Component {
       clients: [],
       selectedClient: null,
       selectedStatus: null,
-      programGuideUrl: null,
       schedulerUrl: null
     };
 
@@ -50,10 +49,6 @@ class App extends Component {
 
   selectStatus(e) {
     this.setState({ selectedStatus: e.target.value });
-  }
-
-  changeProgramGuideUrl(e) {
-    this.setState({ programGuideUrl: e.target.value });
   }
 
   changeSchedulerUrl(e) {
@@ -95,18 +90,15 @@ class App extends Component {
       'Field3Value'
     ]];
 
-    const statusHtmls = {
-      status0: `<p>Welcome to EA Wellness! This is your opportunity to:</p><ul><li>Learn about your current health opportunities to help you Grow!</li><li>Participate in challenges that motivate you to Flourish!</li><li>Enroll in wellness events that will inspire you to Thrive and live your best life!</li></ul><p>Read through the <a href="${this.state.programGuideUrl}" target="_blank">program guide</a> to learn what is included in your EA Wellness program.</p><p style="padding-top:10px"><img src="https://cdn.adurolife.com/assets/ea/images/EA_Branding_R1_Incentive_Image_1.png" width="90%" /></p>`,
-      status1: `<p>Welcome to EA Wellness! This is your opportunity to:</p><ul><li>Sign up for a Health Check and learn about your current health opportunities to help you Grow!</li><li>Participate in challenges that motivate you to Flourish!</li><li>Enroll in wellness events that will inspire you to Thrive and live your best life!</li></ul><p>Read through the <a href="${this.state.programGuideUrl}" target="_blank">program guide</a> to learn what is included in your EA Wellness program.</p><p>Stay tuned for details regarding your onsite Health Check! Once the event is scheduled, registration information will be posted here. Until then, take advantage of the many resources and engaging challenges on this site, and start earning points!</p><p style="padding-top:10px"><img src="https://cdn.adurolife.com/assets/ea/images/EA_Branding_R1_Incentive_Image_1.png" width="90%" /></p>`,
-      status2A: `<p>Welcome to EA Wellness! This is your opportunity to:</p><ul><li>Sign up for a Health Check and learn about your current health opportunities to help you Grow!</li><li>Participate in challenges that motivate you to Flourish!</li><li>Enroll in wellness events that will inspire you to Thrive and live your best life!</li></ul><p>Read through the <a href="${this.state.programGuideUrl}" target="_blank">program guide</a> to learn what is included in your EA Wellness program.</p><p>Sign up for your onsite Health Check event here using the <a href="${this.state.schedulerUrl}" target="_blank">online scheduler</a>.</p><p><strong>Note: </strong>Use the same ID as when you activated your account! Enter your Medical Mutual ID # followed by <strong>00</strong> (primary subscriber), <strong>01</strong> (spouse), or <strong>02</strong>+ (dependents), with no spaces.</p><p>If you are unable to attend the event, please contact EA Wellness at <a href="mailto:eawellness@theea.org">eawellness@theea.org</a> to determine what alternatives may be available.</p><p><img src="https://cdn.adurolife.com/assets/ea/images/EA_Branding_R1_Incentive_Image_1.png" alt="" width="90%" /></p>`,
-      status2B: `<p>Welcome to EA Wellness! This is your opportunity to:</p><ul><li>Sign up for a Health Check and learn about your current health opportunities to help you Grow!</li><li>Participate in challenges that motivate you to Flourish!</li><li>Enroll in wellness events that will inspire you to Thrive and live your best life!</li></ul><p>Read through the <a href="${this.state.programGuideUrl}" target="_blank">program guide</a> to learn what is included in your EA Wellness program.</p><p>Your Health Check event is coming up; keep an eye out for an e-mail with your appointment information. If you need to switch to a different time, please contact your HR department to see if there are other available time slots.</p><p style="padding-top:10px"><p style="padding-top:10px"><img src="https://cdn.adurolife.com/assets/ea/images/EA_Branding_R1_Incentive_Image_1.png" width="90%" /></p>`,
-      status2C: `<p>Welcome to EA Wellness! This is your opportunity to:</p><ul><li>Sign up for a Health Check and learn about your current health opportunities to help you Grow!</li><li>Participate in challenges that motivate you to Flourish!</li><li>Enroll in wellness events that will inspire you to Thrive and live your best life!</li></ul><p>Read through the <a href="${this.state.programGuideUrl}" target="_blank">program guide</a> to learn what is included in your EA Wellness program.</p><p>Your Health Check event is coming up; keep an eye out for communications from your HR Department or a paper sign-up sheet to schedule your appointment. Please contact your HR Department if you have any questions about reserving a time slot.</p><p style="padding-top: 10px;"><img src="https://cdn.adurolife.com/assets/ea/images/EA_Branding_R1_Incentive_Image_1.png" alt="" width="90%" /></p>`,
-      status3: `<p>Welcome to EA Wellness! This is your opportunity to:</p><ul><li>Sign up for a Health Check and learn about your current health opportunities to help you Grow!</li><li>Participate in challenges that motivate you to Flourish!</li><li>Enroll in wellness events that will inspire you to Thrive and live your best life!</li></ul><p>Read through the <a href="${this.state.programGuideUrl}" target="_blank">program guide</a> to learn what is included in your EA Wellness program.</p><p>Your onsite Health Check event for the year has passed. However, you still may have options for completing your Health Check requirement! If you were unable to attend the event, please contact EA Wellness at <a href="mailto:eawellness@theea.org">eawellness@theea.org</a> to determine what alternatives may be available.</p><p style="padding-top:10px"><img src="https://cdn.adurolife.com/assets/ea/images/EA_Branding_R1_Incentive_Image_1.png" width="90%" /></p>`
+    const optionHtmls = {
+      optionA: `<p>Welcome to EA Wellness! This is your opportunity to:</p><ul><li>Sign up for a Health Check and learn about your current health opportunities to help you Grow!</li><li>Participate in challenges that motivate you to Flourish!</li><li>Enroll in wellness events that will inspire you to Thrive and live your best life!</li></ul><p>Sign up for your onsite Health Check event here using the <strong><a href="${this.state.schedulerUrl}" target="_blank" rel="noopener">online scheduler</a>.</strong></p><p>If you are unable to attend the event, please contact EA Wellness at <a href="mailto:eawellness@theea.org">eawellness@theea.org</a> to determine what alternatives may be available.</p><p><img src="https://cdn.adurolife.com/assets/ea/images/EA_Branding_R1_Incentive_Image_1.png" alt="" width="90%" /></p>`,
+      optionB: '<p>Welcome to EA Wellness! This is your opportunity to:</p><ul><li>Sign up for a Health Check and learn about your current health opportunities to help you Grow!</li><li>Participate in challenges that motivate you to Flourish!</li><li>Enroll in wellness events that will inspire you to Thrive and live your best life!</li></ul><p>When an onsite event is scheduled, HR will reach out with instructions on how to sign up.</p><p><img src="https://cdn.adurolife.com/assets/ea/images/EA_Branding_R1_Incentive_Image_1.png" alt="" width="90%" /></p>',
+      optionC: '<p>Welcome to EA Wellness! This is your opportunity to:</p><ul><li>Learn about your current health opportunities to help you Grow!</li><li>Participate in challenges that motivate you to Flourish!</li><li>Enroll in wellness events that will inspire you to Thrive and live your best life!</li></ul><p style="padding-top: 10px;"><img src="https://mywellnessnumbers.com/EmployersAssociation/images/EA_Branding_R1_Incentive_Image_1.png" width="90%" /></p>'
     };
 
     const employerName = this.state.selectedClient.fields['Limeade e='];
     const eventId = $('#eventId').val();
-    const htmlDescription = statusHtmls[this.state.selectedStatus];
+    const htmlDescription = optionHtmls[this.state.selectedStatus];
     const groupTargetingValue = $('#targetingGroup').val();
 
     const cie = [
@@ -232,25 +224,17 @@ class App extends Component {
           </div>
 
           <div className="form-group">
-            <label htmlFor="status">Status</label>
+            <label htmlFor="status">Welcome Tile Option</label>
             <select id="status" className="form-control custom-select" onChange={(e) => this.selectStatus(e)}>
-              <option defaultValue>Select a Status</option>
-              <option value="status0">Status 0</option>
-              <option value="status1">Status 1</option>
-              <option value="status2A">Status 2A</option>
-              <option value="status2B">Status 2B</option>
-              <option value="status2C">Status 2C</option>
-              <option value="status3">Status 3</option>
+              <option defaultValue>Select an Option</option>
+              <option value="optionA">Option A: Online Scheduler</option>
+              <option value="optionB">Option B: Talk to HR</option>
+              <option value="optionC">Option C: No Event Ever</option>
             </select>
           </div>
 
-          <div className="form-group">
-            <label htmlFor="programGuideUrl">Program Guide URL</label>
-            <input type="text" className="form-control" id="programGuideUrl" onChange={(e) => this.changeProgramGuideUrl(e)} />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="schedulerUrl">Scheduler URL (if applicable)</label>
+          <div className="form-group" style={{ display: this.state.selectedStatus === 'optionA' ? 'block' : 'none' }}>
+            <label htmlFor="schedulerUrl">Scheduler URL</label>
             <input type="text" className="form-control" id="schedulerUrl" onChange={(e) => this.changeSchedulerUrl(e)} />
           </div>
 
