@@ -1,7 +1,4 @@
 /node_modules
 npm-debug.*
 bundle.js
-
-# IntelliJ
-*.iml
-/.idea
+package-lock.json
